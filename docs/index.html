@@ -1,32 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GetSwipe</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      font-size: 4rem;
-      color: white;
-    }
-    .redsow {
-      color: red;
-    }
-    .underscore {
-      color: white;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SWIPE — Roblox External</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Code', monospace;
+  }
+  body {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: linear-gradient(270deg, #000000, #111111, #222222, #111111);
+    background-size: 800% 800%;
+    animation: backgroundShift 20s ease infinite;
+    color: white;
+    transition: background 0.5s ease;
+  }
+  @keyframes backgroundShift {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+  }
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    padding: 14px 24px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    margin-bottom: 60px;
+  }
+  .nav-left {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #fff;
+  }
+  .nav-center {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.95rem;
+  }
+  .nav-center a {
+    color: #ccc;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+  }
+  .nav-center a:hover {
+    color: #fff;
+  }
+  .nav-right button {
+    background: transparent;
+    color: white;
+    padding: 8px 16px;
+    margin-left: 10px;
+    border: 1px solid white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-right button:hover {
+    box-shadow: 0 0 8px 2px #fff;
+  }
+  .nav-right button.loading {
+    color: transparent;
+    pointer-events: none;
+    border-color: #fff;
+    box-shadow: 0 0 8px 2px #fff;
+  }
+  .nav-right button.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    border: 3px solid white;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .version-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #111;
+    color: #aaa;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+  }
+  .headline {
+    text-align: center;
+    font-size: 2.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: none;
+  }
+  .headline span {
+    color: white;
+  }
+  .update-box {
+    max-width: 600px;
+    margin: 20px auto 40px auto;
+    background: #222;
+    color: #ccc;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(255,255,255,0.1);
+    user-select: none;
+  }
+  footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #444;
+    border-top: 1px solid #222;
+    padding-top: 20px;
+    margin-top: 40px;
+  }
+</style>
 </head>
 <body>
-  <div>
-    <span>hey </span><span class="redsow">redsow</span><span class="underscore">_</span>
+  <div class="nav">
+    <div class="nav-left">SWIPE</div>
+    <div class="nav-center">
+      <a href="#" data-message="Status: Coming Soon">Overview</a>
+      <a href="#" data-message="Status: In Progress">Changelog</a>
+      <a href="#" data-message="Status: Not Ready">Tickets</a>
+      <a href="#" data-message="Private for now">Partner</a>
+    </div>
+    <div class="nav-right">
+      <button id="buyKeyBtn">Buy Key</button>
+      <button id="discordBtn">Discord</button>
+    </div>
   </div>
+
+  <div class="version-tag">v1.0.0-PRE</div>
+  <h1 class="headline">SWIPE, The <span>Best External</span> for Roblox</h1>
+
+  <div class="update-box">
+    <strong>Latest Update:</strong> Beta testing starts August 12th. Stay tuned!
+  </div>
+
+  <footer>
+    © 2025 SWIPE — Built for performance.
+  </footer>
+
+  <script>
+    const buyKeyBtn = document.getElementById('buyKeyBtn');
+    buyKeyBtn.addEventListener('click', () => {
+      if (buyKeyBtn.classList.contains('loading')) return;
+      buyKeyBtn.classList.add('loading');
+
+      setTimeout(() => {
+        buyKeyBtn.classList.remove('loading');
+      }, 2000);
+    });
+
+    const discordBtn = document.getElementById('discordBtn');
+    discordBtn.addEventListener('click', () => {
+      window.open('https://discord.gg/m82RmkQc', '_blank', 'noopener');
+    });
+  </script>
 </body>
 </html>
