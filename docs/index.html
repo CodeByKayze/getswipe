@@ -1,183 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SWIPE — Roblox External</title>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet" />
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Fira Code', monospace;
-  }
-  body {
-    min-height: 100vh;
-    padding: 40px 20px;
-    background: linear-gradient(270deg, #000000, #111111, #222222, #111111);
-    background-size: 800% 800%;
-    animation: backgroundShift 20s ease infinite;
-    color: white;
-    transition: background 0.5s ease;
-  }
-  @keyframes backgroundShift {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
-  }
-  .nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background: #111;
-    padding: 14px 24px;
-    border: 1px solid #333;
-    border-radius: 12px;
-    margin-bottom: 60px;
-  }
-  .nav-left {
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #fff;
-  }
-  .nav-center {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 0.95rem;
-  }
-  .nav-center a {
-    color: #ccc;
-    text-decoration: none;
-    position: relative;
-    transition: color 0.2s ease-in-out;
-  }
-  .nav-center a:hover {
-    color: #fff;
-  }
-  .nav-right button {
-    background: transparent;
-    color: white;
-    padding: 8px 16px;
-    margin-left: 10px;
-    border: 1px solid white;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
-  }
-  .nav-right button:hover {
-    box-shadow: 0 0 8px 2px #fff;
-  }
-  .nav-right button.loading {
-    color: transparent;
-    pointer-events: none;
-    border-color: #fff;
-    box-shadow: 0 0 8px 2px #fff;
-  }
-  .nav-right button.loading::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 18px;
-    height: 18px;
-    border: 3px solid white;
-    border-top: 3px solid transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    transform: translate(-50%, -50%);
-  }
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  .version-tag {
-    display: inline-block;
-    padding: 5px 12px;
-    background: #111;
-    color: #aaa;
-    border: 1px solid #333;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    margin-bottom: 20px;
-  }
-  .headline {
-    text-align: center;
-    font-size: 2.7rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: white;
-    text-shadow: none;
-  }
-  .headline span {
-    color: white;
-  }
-  .update-box {
-    max-width: 600px;
-    margin: 20px auto 40px auto;
-    background: #222;
-    color: #ccc;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 1rem;
-    text-align: center;
-    box-shadow: 0 0 8px rgba(255,255,255,0.1);
-    user-select: none;
-  }
-  footer {
-    text-align: center;
-    font-size: 0.75rem;
-    color: #444;
-    border-top: 1px solid #222;
-    padding-top: 20px;
-    margin-top: 40px;
-  }
-</style>
-</head>
-<body>
-  <div class="nav">
-    <div class="nav-left">SWIPE</div>
-    <div class="nav-center">
-      <a href="#" data-message="Status: Coming Soon">Overview</a>
-      <a href="#" data-message="Status: In Progress">Changelog</a>
-      <a href="#" data-message="Status: Not Ready">Tickets</a>
-      <a href="#" data-message="Private for now">Partner</a>
-    </div>
-    <div class="nav-right">
-      <button id="buyKeyBtn">Buy Key</button>
-      <button id="discordBtn">Discord</button>
-    </div>
-  </div>
-
-  <div class="version-tag">v1.0.0-PRE</div>
-  <h1 class="headline">SWIPE, The <span>Best External</span> for Roblox</h1>
-
-  <div class="update-box">
-    <strong>Latest Update:</strong> Beta testing starts August 12th. Stay tuned!
-  </div>
-
-  <footer>
-    © 2025 SWIPE — Built for performance.
-  </footer>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SWIPE.xyz — Roblox Executor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    const buyKeyBtn = document.getElementById('buyKeyBtn');
-    buyKeyBtn.addEventListener('click', () => {
-      if (buyKeyBtn.classList.contains('loading')) return;
-      buyKeyBtn.classList.add('loading');
-
-      setTimeout(() => {
-        buyKeyBtn.classList.remove('loading');
-      }, 2000);
-    });
-
-    const discordBtn = document.getElementById('discordBtn');
-    discordBtn.addEventListener('click', () => {
-      window.open('https://discord.gg/m82RmkQc', '_blank', 'noopener');
-    });
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            primary: { 500: '#4f46e5', 600: '#4338ca', 700: '#3730a3' },
+            accent: { 500: '#6366f1' }
+          },
+          boxShadow: { card: '0 4px 16px rgba(0,0,0,0.06)', hover: '0 12px 24px rgba(0,0,0,0.12)' }
+        }
+      }
+    }
   </script>
+</head>
+<body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased">
+
+<!-- Navbar -->
+<header class="sticky top-0 z-50 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800">
+  <div class="mx-auto max-w-7xl px-6 flex h-16 items-center justify-between">
+    <a href="#" class="flex items-center gap-2 font-extrabold text-xl tracking-tight">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-primary-600 text-white">S</span>
+      SWIPE.xyz
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+      <button onclick="showTab('features')" class="tab-btn hover:text-primary-600 transition">Features</button>
+      <button onclick="showTab('pricing')" class="tab-btn hover:text-primary-600 transition">Pricing</button>
+      <button onclick="showTab('download')" class="tab-btn hover:text-primary-600 transition">Download</button>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative overflow-hidden py-24 bg-zinc-900 text-white text-center">
+  <div class="mx-auto max-w-3xl px-6">
+    <h1 class="text-6xl md:text-7xl font-extrabold tracking-tight">SWIPE</h1>
+    <p class="mt-4 text-lg text-zinc-300">Roblox executor with Lifetime & Trial keys. Easy, safe, and manual verification via Gamepass, gift cards, or Bitcoin.</p>
+    <div class="mt-10 flex justify-center gap-4">
+      <button onclick="showTab('pricing')" class="rounded-lg bg-primary-600 px-6 py-3 font-semibold text-white hover:bg-primary-700 transition shadow-sm">Get Key</button>
+      <button onclick="showTab('features')" class="rounded-lg border border-zinc-300 dark:border-zinc-700 px-6 py-3 font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-900 transition">See Features</button>
+    </div>
+  </div>
+</section>
+
+<!-- Tabs Container -->
+<section id="tab-content" class="mx-auto max-w-7xl px-6 py-12">
+
+  <!-- Features Tab -->
+  <div id="features" class="tab hidden">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-4xl font-extrabold tracking-tight">Features</h2>
+      <p class="mt-4 text-zinc-600 dark:text-zinc-300 text-lg">Everything you need to run Roblox scripts efficiently on Windows 11 & 10.</p>
+    </div>
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 shadow-card hover:shadow-hover transition">
+        <div class="text-4xl mb-4">💻</div>
+        <h3 class="font-semibold text-xl mb-2">Windows 11 & 10 Compatible</h3>
+        <p class="text-zinc-600 dark:text-zinc-300 text-sm">Runs smoothly on all modern Windows PCs.</p>
+      </div>
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 shadow-card hover:shadow-hover transition">
+        <div class="text-4xl mb-4">🔒</div>
+        <h3 class="font-semibold text-xl mb-2">Secure</h3>
+        <p class="text-zinc-600 dark:text-zinc-300 text-sm">Manual verification ensures safety.</p>
+      </div>
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 shadow-card hover:shadow-hover transition">
+        <div class="text-4xl mb-4">⚡</div>
+        <h3 class="font-semibold text-xl mb-2">Manual Verification</h3>
+        <p class="text-zinc-600 dark:text-zinc-300 text-sm">Gift card, Bitcoin & gamepass verification via Discord ticket.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing Tab -->
+  <div id="pricing" class="tab hidden">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-4xl font-extrabold tracking-tight">Pricing</h2>
+      <p class="mt-4 text-zinc-600 dark:text-zinc-300 text-lg">Choose your payment method below.</p>
+    </div>
+    <div class="mt-12 grid gap-8 md:grid-cols-2">
+
+      <!-- Gamepass / Gift Card -->
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 shadow-card hover:shadow-hover transition flex flex-col justify-between">
+        <h3 class="font-semibold text-xl mb-2">Lifetime Access</h3>
+        <p class="text-zinc-600 dark:text-zinc-300 text-sm mb-4">1,600 Robux or Gift Card — Full SWIPE access forever.</p>
+        <ul class="space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+          <li>✔ Lifetime executor access</li>
+          <li>✔ Manual verification via Discord</li>
+        </ul>
+        <button onclick="showModal('gamepass')" class="mt-6 rounded-lg bg-primary-600 px-5 py-3 text-center font-semibold text-white hover:bg-primary-700 transition shadow-sm">Pay with Gamepass</button>
+        <button onclick="showModal('giftcard')" class="mt-3 rounded-lg border border-zinc-300 dark:border-zinc-700 px-5 py-3 text-center font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-900 transition">Pay with Gift Card</button>
+      </div>
+
+      <!-- Bitcoin -->
+      <div class="rounded-2xl border border-yellow-400 bg-white dark:bg-zinc-900 p-8 shadow-card hover:shadow-hover transition flex flex-col justify-between">
+        <h3 class="font-semibold text-xl mb-2">Bitcoin Payment</h3>
+        <p class="text-zinc-600 dark:text-zinc-300 text-sm mb-4">Pay with Bitcoin for Lifetime access.</p>
+        <ul class="space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+          <li>✔ Lifetime executor access</li>
+          <li>✔ Verified via Discord ticket</li>
+        </ul>
+        <div class="mt-6 bg-zinc-100 dark:bg-zinc-800 rounded-lg p-4 text-sm font-mono break-all">
+          bc1qvpsg8rl33c5yratymymk7gzty90k83se0e09g6
+        </div>
+        <button onclick="showModal('bitcoin')" class="mt-4 rounded-lg border border-yellow-500 px-5 py-3 text-center font-semibold hover:bg-yellow-50 dark:hover:bg-zinc-900 transition">Bitcoin Instructions</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Download Tab -->
+  <div id="download" class="tab hidden">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-4xl font-extrabold tracking-tight">Download</h2>
+      <p class="mt-4 text-zinc-600 dark:text-zinc-300 text-lg">Windows version ready, iOS coming soon.</p>
+    </div>
+    <div class="mt-12 flex justify-center gap-8">
+      <a href="#" class="flex flex-col items-center gap-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-6 py-4 shadow-card hover:shadow-hover transition transform hover:scale-105">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2012.svg" class="h-12" alt="Windows Logo">
+        <span class="font-semibold">Windows</span>
+      </a>
+      <a href="#" class="flex flex-col items-center gap-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-6 py-4 shadow-card opacity-50 cursor-not-allowed">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="h-12" alt="Apple Logo">
+        <span class="font-semibold">iOS (Coming Soon)</span>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-zinc-200 dark:border-zinc-800">
+  <div class="mx-auto max-w-7xl px-6 py-10 text-center text-sm opacity-80">
+    © <span id="year"></span> SWIPE.xyz — Roblox Executor.
+  </div>
+</footer>
+
+<!-- Modals -->
+<div id="modal" class="fixed inset-0 hidden items-center justify-center bg-black/50 z-50">
+  <div class="bg-zinc-900 text-white p-6 rounded-xl max-w-md w-full">
+    <h3 class="text-xl font-bold mb-4" id="modal-title">Title</h3>
+    <p class="mb-6" id="modal-text">Instructions</p>
+    <button onclick="closeModal()" class="bg-primary-600 px-4 py-2 rounded-lg hover:bg-primary-700 transition font-semibold">Close</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function showTab(tabId) {
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.add('hidden'));
+    document.getElementById(tabId).classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  showTab('features'); // default tab
+
+  function showModal(type) {
+    const modal = document.getElementById('modal');
+    const title = document.getElementById('modal-title');
+    const text = document.getElementById('modal-text');
+    if(type === 'gamepass') {
+      title.textContent = "Gamepass Instructions";
+      text.innerHTML = "✅ Buy the Gamepass on Roblox.<br>✅ Join our Discord.<br>✅ Send a screenshot of your purchase in #tickets channel for verification.";
+    } else if(type === 'giftcard') {
+      title.textContent = "Gift Card Instructions";
+      text.innerHTML = "✅ Send a Roblox gift card code via Discord DM.<br>✅ Our team will verify and send your Lifetime key manually.";
+    } else if(type === 'bitcoin') {
+      title.textContent = "Bitcoin Instructions";
+      text.innerHTML = "✅ Send <b>$19.99 worth of BTC</b> to:<br><br><code>bc1qvpsg8rl33c5yratymymk7gzty90k83se0e09g6</code><br><br>✅ Join our Discord and open a ticket with your transaction ID.<br>✅ Our team will verify and activate your Lifetime key.";
+    }
+    modal.classList.remove('hidden');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.add('hidden');
+  }
+</script>
+
 </body>
 </html>
